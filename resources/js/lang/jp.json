@@ -1,0 +1,16 @@
+{
+    "common": {
+        "select_lang": "言語"
+    },
+    "login": {
+        "title": "これはホームページです",
+        "content" : "こんにちは",
+        "login" : "ログインする",
+        "remember" : "私を覚えてますか",
+        "email" : "Eメール",
+        "password" : "パスワード",
+        "name" : "名前",
+        "password_confirmation" : "パスワード確認",
+        "register": "登録"
+    }
+}

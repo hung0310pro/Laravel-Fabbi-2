@@ -1,0 +1,16 @@
+{
+    "common": {
+        "select_lang": "Ngôn ngữ"
+    },
+    "login": {
+        "title": "Đây là trang chủ",
+        "content" : "Xin chào",
+        "login" : "Đăng nhập",
+        "remember" : "Nhớ đăng nhập",
+        "email" : "Email của bạn",
+        "password" : "Password của bạn",
+        "name" : "Nhập tên của bạn",
+        "password_confirmation" : "Nhập lại password",
+        "register": "Đăng Ký"
+    }
+}

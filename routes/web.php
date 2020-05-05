@@ -26,4 +26,6 @@ Route::group([
     'prefix' => 'auth'
 ], function ($router) {
     Route::post('login', 'AuthCustomController@login');
+    Route::post('register', 'AuthCustomController@register');
+    Route::get('me', 'AuthCustomController@me');
 });
