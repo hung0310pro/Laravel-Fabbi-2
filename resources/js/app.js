@@ -8,11 +8,11 @@ window.Vue = require('vue');
 import Vue from 'vue'
 import i18n from './lang/i18n'
 import store from './store'
-
+import apiuser from './apiuser'
 
 //router
 import VueRouter from 'vue-router'
-import { routes }  from './index';
+import {routes} from './index';
 
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 
@@ -21,6 +21,15 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'hash',
     routes
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.name === 'redirectComponent') {
+        apiuser();
+    } else if(to.name === 'logincustom') {
+        store.state.name = '';
+    }
+    next();
 })
 
 const app = new Vue({
@@ -31,3 +40,5 @@ const app = new Vue({
 });
 
 export default app;
+
+

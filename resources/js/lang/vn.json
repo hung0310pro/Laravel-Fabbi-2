@@ -11,6 +11,8 @@
         "password" : "Password của bạn",
         "name" : "Nhập tên của bạn",
         "password_confirmation" : "Nhập lại password",
-        "register": "Đăng Ký"
+        "register": "Đăng Ký",
+        "status": "Đăng Xuất",
+        "name1": "Họ tên"
     }
 }

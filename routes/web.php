@@ -27,5 +27,8 @@ Route::group([
 ], function ($router) {
     Route::post('login', 'AuthCustomController@login');
     Route::post('register', 'AuthCustomController@register');
+    Route::get('logout', 'AuthCustomController@logout');
     Route::get('me', 'AuthCustomController@me');
 });
+
+Route::get('/mail', 'EmailController@sendEMail');

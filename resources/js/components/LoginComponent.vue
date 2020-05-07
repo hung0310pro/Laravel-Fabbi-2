@@ -89,6 +89,7 @@
     export default {
         data() {
             return {
+                status:'1',
                 errors: [],
                 email: '',
                 password: '',

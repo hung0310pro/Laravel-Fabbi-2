@@ -11,6 +11,8 @@
         "password" : "パスワード",
         "name" : "名前",
         "password_confirmation" : "パスワード確認",
-        "register": "登録"
+        "register": "登録",
+        "status": "ログアウト",
+        "name1": "氏名"
     }
 }

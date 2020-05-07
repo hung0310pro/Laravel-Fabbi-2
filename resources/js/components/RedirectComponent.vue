@@ -1,10 +1,19 @@
 <template>
-    <div id="app">
-        <h1 v-if="name">Hi {{ name }}</h1>
-        <h3 v-if="email">{{ email }}</h3>
-        <p>{{ $t('common.select_lang') }}</p>
-        <p>{{ $t('login.title') }}</p>
-        <p>{{ $t('login.content') }}</p>
+    <div class="container">
+        <table id="bang1" class="table table-bordered table-striped table-hover text-center">
+            <thead>
+            <tr>
+                <th>{{ $t('login.name1') }}</th>
+                <th>{{ $t('login.email') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td> {{ name }}</td>
+                <td> {{ email }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -42,3 +51,13 @@
         }
     }
 </script>
+
+<style>
+    .container h1{
+        text-align: center;
+    }
+
+    #bang1{
+        margin-top: 30px;
+    }
+</style>

@@ -19,7 +19,7 @@ class AuthCustomController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'me', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'me', 'register','logout']]);
     }
 
     /**
@@ -64,19 +64,19 @@ class AuthCustomController extends Controller
     }
 
 
-    public function login(Request $request)
+    public function login()
     {
-        $this->validate($request,
+       /* $this->validate($request,
             [
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8',
+                'email' => 'required|string|email|max:255',
+                'password' => 'required|string',
             ],
 
             [
                 'email.unique' => 'The email has already been taken'
             ]
 
-        );
+        );*/
 
         $credentials = request(['email', 'password']);
 
@@ -102,12 +102,12 @@ class AuthCustomController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    /*    public function logout()
-        {
-            auth()->logout();
+    public function logout()
+    {
+        auth()->logout();
 
-            return response()->json(['message' => 'Successfully logged out']);
-        }*/
+        return response()->json(['message' => 'Successfully logged out']);
+    }
 
     /**
      * Refresh a token.
