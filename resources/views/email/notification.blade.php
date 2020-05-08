@@ -5,9 +5,7 @@
 </head>
 <body>
 
-<h1>This is test mail from ABC</h1>
-{{$detail['title']}}<br>
-{{$detail['body']}}<br>
-
+<h1>Please click this link to view new Notification</h1>
+<a href="{{ url('/#/viewNotification')."/".$linkId }}" target="_blank">Link</a>
 </body>
 </html>

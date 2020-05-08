@@ -29,6 +29,7 @@ Route::group([
     Route::post('register', 'AuthCustomController@register');
     Route::get('logout', 'AuthCustomController@logout');
     Route::get('me', 'AuthCustomController@me');
+    Route::resource('notifications', 'Notifications');
 });
 
 Route::get('/mail', 'EmailController@sendEMail');

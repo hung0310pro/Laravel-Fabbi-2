@@ -16,11 +16,11 @@ class PostEmail extends Mailable
      *
      * @return void
      */
-    protected $detail;
+    protected $linkId;
 
-    public function __construct($detail)
+    public function __construct($linkId)
     {
-        $this->detail = $detail;
+        $this->linkId = $linkId;
     }
 
     /**
@@ -30,6 +30,6 @@ class PostEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.notification')->with('detail', $this->detail);
+        return $this->view('email.notification')->with('linkId', $this->linkId);
     }
 }

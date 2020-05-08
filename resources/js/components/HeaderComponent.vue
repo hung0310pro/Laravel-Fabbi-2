@@ -93,6 +93,10 @@
         max-width: 100%;
     }
 
+    .navbar-expand-md{
+        margin-bottom: 30px !important;
+    }
+
     .container .col-md-2 {
         float: left;
     }

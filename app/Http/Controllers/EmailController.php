@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function sendEMail(){
+/*    public function sendEMail($nofitication){
         $detail = [
-            'title' => 'Title test 123',
-            'body' => 'Body email test'
+            'title' => $nofitication->title,
+            'body' => $nofitication->content,
         ];
 
         Mail::to('hung0210pro@gmail.com')->send(new PostEmail($detail));
         return 'Email sent Successfully';
-    }
+    }*/
 }
