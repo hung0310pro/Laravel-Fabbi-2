@@ -67,7 +67,7 @@
                     .then(response => {
                         if (response.status == 200) {
                             this.$store.name = '';
-                            this.$router.push('logincustom');
+                            this.$router.push('/logincustom');
                         }
                     })
                     .catch(error => {
@@ -76,7 +76,7 @@
             },
 
             register(e){
-                this.$router.push('registerComponent');
+                this.$router.push('/registerComponent');
             },
 
             checkAuth(){

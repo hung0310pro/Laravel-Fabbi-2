@@ -19,7 +19,18 @@ class Notifications extends Controller
      */
     public function index()
     {
-        //
+        if (!Auth::check()) {
+            return response()->json('', 401);
+        }
+
+        $user = Auth::user();
+
+        if ($user->level == 1) {
+            $notification = Notification::all();
+            return response()->json($notification);
+        } else {
+            return response()->json('', 403);
+        }
     }
 
     /**
@@ -72,17 +83,31 @@ class Notifications extends Controller
         }
         try {
             $notification = Notification::findOrFail($id, ['title', 'content']);
+            $user = Auth::user();
             if ($notification && Auth::check()) {
-                $user = Auth::user();
-                $check = UsersNotifications::where('users_id',$user->id)->where('notifications_id',$id)->get();
-                if(count($check->toArray()) < 1) {
-                    UsersNotifications::create([
-                        'users_id' => $user->id,
-                        'notifications_id' => $id,
-                    ]);
+                if ($user->level != 1) {
+                    $check = UsersNotifications::where('users_id', $user->id)->where('notifications_id', $id)->get();
+                    if (count($check->toArray()) < 1) {
+                        UsersNotifications::create([
+                            'users_id' => $user->id,
+                            'notifications_id' => $id,
+                        ]);
+                    }
+                    return response()->json($notification);
+                } else {
+                    $users = User::where('level', 0)->get();
+                    $usersCount = count($users);
+                    $countView = UsersNotifications::where('notifications_id', $id)->get()->count();
+                    $countNotView = $usersCount - $countView;
+                    $data = [
+                      'usersCount' => $usersCount,
+                      'countView' => $countView,
+                      'countNotView' => $countNotView
+                    ];
+                    return response()->json($data);
                 }
             }
-            return response()->json($notification);
+
         } catch (ModelNotFoundException $e) {
             return abort(404);
         }

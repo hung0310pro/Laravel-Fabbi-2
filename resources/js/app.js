@@ -28,9 +28,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.name === 'redirectComponent' || to.name === 'notificationsComponent') {
+    if (to.name === 'redirectComponent' || to.name === 'notificationsComponent' || to.name === 'listNotificationsComponent' || to.name === 'viewDetailComponent') {
         apiuser(to.name);
-    } else if(to.name === 'logincustom') {
+    } else if (to.name === 'logincustom') {
         store.state.name = '';
     }
     next();
