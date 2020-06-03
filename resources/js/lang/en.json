@@ -1,0 +1,18 @@
+{
+    "common": {
+        "select_lang": "language"
+    },
+    "login": {
+        "title": "This is the homepage",
+        "content" : "Hello",
+        "login" : "Login",
+        "remember" : "Remember Me",
+        "email" : "Email",
+        "password" : "Password",
+        "name" : "name",
+        "password_confirmation" : "Confirm Password",
+        "register": "Register",
+        "status": "Logout",
+        "name1": "Name"
+    }
+}
