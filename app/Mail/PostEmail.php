@@ -30,6 +30,6 @@ class PostEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.notification')->with('linkId', $this->linkId);
+        return $this->subject('Hí anh em')->view('email.notification')->with('linkId', $this->linkId);
     }
 }

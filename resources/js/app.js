@@ -20,7 +20,7 @@ import notifications from './notifications/notifications'
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 /*Vue.component('view-notification', require('./components/ViewNotification.vue').default);*/
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: 'hash',
@@ -29,7 +29,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.name === 'redirectComponent' || to.name === 'notificationsComponent' || to.name === 'listNotificationsComponent' || to.name === 'viewDetailComponent') {
-        apiuser(to.name);
+        apiuser.functiongetInfo(to.name);
     } else if (to.name === 'logincustom') {
         store.state.name = '';
     }

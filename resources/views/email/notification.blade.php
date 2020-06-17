@@ -6,6 +6,7 @@
 <body>
 
 <h1>Please click this link to view new Notification</h1>
-<a href="{{ url('/#/viewNotification')."/".$linkId }}" target="_blank">Link</a>
+<a href="{{ url('/#/viewNotifications')."/".$linkId }}" target="_blank">Link</a>
+<img src=" {{ url('images/test.png') }}">
 </body>
 </html>

@@ -77,9 +77,7 @@ class AuthCustomController extends Controller
             ]
 
         );*/
-
         $credentials = request(['email', 'password']);
-
         if (!$token = auth()->attempt($credentials)) {
             return $this->getError();
         }
@@ -126,6 +124,14 @@ class AuthCustomController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    public function updateNotificationToken(Request $request){
+        $user = Auth::user();
+        $users = User::findOrFail($user->id);
+        $users->devide_token = $request->tokens;
+        $users->save();
+    }
+
     protected function respondWithToken($token)
     {
         $time = auth()->factory()->getTTL() * 60;

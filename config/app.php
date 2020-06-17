@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,8 @@ return [
          */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */

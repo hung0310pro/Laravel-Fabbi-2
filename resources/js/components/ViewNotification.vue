@@ -24,6 +24,7 @@
 
         methods: {
             getInFoPost() {
+                // get id in url
                 let id = this.$route.params.id;
                 this.$store.dispatch('actionTodoChangeStatus', {id})
             },

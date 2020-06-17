@@ -12,7 +12,7 @@
             <tr v-for="(todo, index) in listNotifications">
                 <td>{{ index }}</td>
                 <td>{{ todo.title }}</td>
-                <td><a  href="#" @click="viewDetail($event,todo.id)">View Detail</a></td>
+                <td><a  @click="viewDetail($event,todo.id)">View Detail</a></td>
             </tr>
             </tbody>
         </table>
@@ -37,7 +37,7 @@
 
         methods: {
             getInFo() {
-                axios.get('/Code/Laravel-Fabbi/laravel/public/auth/notifications')
+                axios.get('/auth/notifications')
                     .then(response => {
                         if (response.status == 200) {
                             this.listNotifications = response.data;

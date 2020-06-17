@@ -15,7 +15,8 @@
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ $t('login.email') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ $t('login.email')
+                                    }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -32,7 +33,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ $t('login.password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{
+                                    $t('login.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -85,14 +87,16 @@
 <script>
 
     import i18n from '../lang/i18n';
+    import apiuser from "../apiuser";
 
     export default {
+
         data() {
             return {
-                status:'1',
+                status: '1',
                 errors: [],
                 email: '',
-                password: '',
+                password: ''
             }
         },
 
@@ -102,10 +106,10 @@
 
         methods: {
             getInFo() {
-                axios.get('/Code/Laravel-Fabbi/laravel/public/auth/me')
+                axios.get('/auth/me')
                     .then(response => {
                         if (response.data.email) {
-                            this.$router.push('redirectComponent');
+                            this.$router.push('/redirectComponent');
                         }
                     })
                     .catch(error => {
@@ -115,13 +119,14 @@
 
             login(e) {
                 this.errors = [];
-                axios.post('/Code/Laravel-Fabbi/laravel/public/auth/login', {
+                axios.post('/auth/login', {
                     email: this.email,
                     password: this.password
+
                 })
                     .then(response => {
                         if (response.status == 200) {
-                            this.$router.push('redirectComponent');
+                            this.$router.push('/redirectComponent');
                         }
                     })
                     .catch(error => {

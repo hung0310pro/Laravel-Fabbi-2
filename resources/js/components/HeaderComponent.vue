@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="notification-custom"><span></span></div>
             <div class="container">
                 <div class="col-md-12">
                     <div class="col-md-2">
@@ -63,7 +64,7 @@
             },
 
             logout() {
-                axios.get('/Code/Laravel-Fabbi/laravel/public/auth/logout')
+                axios.get('/auth/logout')
                     .then(response => {
                         if (response.status == 200) {
                             this.$store.name = '';

@@ -1,4 +1,7 @@
-/*
+import Vue from 'vue'
+import Vuex from 'vuex'
+import app from './../app'
+
 import {apiAddTodo } from './apinotifications'
 
 const TODO_ADD = 'todo_add'
@@ -14,12 +17,8 @@ const mutations = {
 }
 
 const actions = {
-    async actionTodoAdd({ commit }, notifications) {
-        let response = await apiAddTodo(notifications)
-
-        if (response.status == 200) {
-            return commit(TODO_ADD, response.data)
-        }
+    async actionTodoAdd1({ commit }, notifications) {
+        console.log(notifications);
     },
 }
 
@@ -28,4 +27,4 @@ export default {
     actions,
     mutations
 }
-*/
+

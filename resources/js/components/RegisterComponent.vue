@@ -90,7 +90,7 @@
 
         methods: {
             getInFo() {
-                axios.get('/Code/Laravel-Fabbi/laravel/public/auth/me')
+                axios.get('/auth/me')
                     .then(response => {
                         if (response.data.email) {
                             this.$router.push('redirectComponent');
@@ -103,7 +103,7 @@
 
             register(e) {
                 this.errors = [];
-                axios.post('/Code/Laravel-Fabbi/laravel/public/auth/register', {
+                axios.post('/auth/register', {
                     email: this.email,
                     name: this.name,
                     password: this.password,

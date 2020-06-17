@@ -44,10 +44,6 @@
                 for(let index in this.$store.state.notifications[0]){
                     this.message  =  this.$store.state.notifications[0][index];
                 }
-
-                if(this.message == "Add Notification And Send Email Success"){
-                    this.$router.push('/listNotificationsComponent').catch(err => {});
-                }
             },
         },
 

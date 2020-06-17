@@ -25,7 +25,7 @@
         methods: {
             getNotifications() {
                 let id = this.$route.params.id;
-                axios.get('/Code/Laravel-Fabbi/laravel/public/auth/notifications/' + id)
+                axios.get('/auth/notifications/' + id)
                     .then(response => {
                         if (response.status == 200) {
                             this.countNotView = response.data.countNotView;

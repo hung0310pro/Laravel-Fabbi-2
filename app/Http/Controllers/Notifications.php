@@ -146,4 +146,43 @@ class Notifications extends Controller
     {
         //
     }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    // create notification when created notification
+    public function getMessageFirebase(){
+        $token = [];
+        $listToken = User::all(['devide_token']);
+        $url = "https://fcm.googleapis.com/fcm/send";
+        foreach ($listToken as $value){
+            $token[] = $value->devide_token;
+        }
+        $serverKey = 'AAAApj_2wTQ:APA91bEBVutyal9DnuFUcWUy1rS7P5jme_rMgrv4JcK6FMXwtEkdLsGLpW7pcG8JRgSBPpNWtkc8vWqxGu67pYUenkhqDK0yuWPlT-CeJrAcQbiAmozFsaXh0YeDR8l9320XtjOMZwAB';
+        $title = "New Notification";
+        $body = "New Notification is created, please check email";
+        $notification = array('title' =>$title , 'body' => $body, 'sound' => 'default', 'badge' => '1');
+        $arrayToSend = array('registration_ids' => $token, 'notification' => $notification,'priority'=>'high');
+        $json = json_encode($arrayToSend);
+        $headers = array();
+        $headers[] = 'Content-Type: application/json';
+        $headers[] = 'Authorization: key='. $serverKey;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+        //Send the request
+        $response = curl_exec($ch);
+        //Close request
+        if ($response === FALSE) {
+            die('FCM Send Error: ' . curl_error($ch));
+        }
+        curl_close($ch);
+    }
+    // end
 }

@@ -19,6 +19,8 @@
 
 <script>
     import i18n from '../lang/i18n';
+    import Firebase from "firebase";
+    import apiuser from "../apiuser";
 
     export default {
         data() {
@@ -31,11 +33,38 @@
 
         created() {
             this.getInFo();
+            this.updateNotificationToken();
         },
 
         methods: {
+            // create notification when created notification
+            updateNotificationToken() {
+                const messaging = Firebase.messaging();
+                messaging.requestPermission()
+                    .then(function () {
+                        // get the token in the form of promise
+                        return messaging.getToken()
+                    })
+                    .then(function (tokens) {
+                        // update token get in browser to database for user login
+                        axios.post('/auth/notifications/updateToken', {
+                            tokens: tokens
+                        })
+                            .then(response => {
+
+                            })
+                            .catch(error => {
+
+                            })
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+                    });
+            },
+            // end
+
             getInFo() {
-                axios.get('/Code/Laravel-Fabbi/laravel/public/auth/me')
+                axios.get('/auth/me')
                     .then(response => {
                         if (response.data.email) {
                             this.name = response.data.name;
@@ -53,11 +82,11 @@
 </script>
 
 <style>
-    .container h1{
+    .container h1 {
         text-align: center;
     }
 
-    #bang1{
+    #bang1 {
         margin-top: 30px;
     }
 </style>

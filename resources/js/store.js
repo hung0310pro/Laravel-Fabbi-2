@@ -5,11 +5,15 @@ import i18n from './lang/i18n'
 
 import {apiAddTodo, apiEditTodo, redirect} from './notifications/apinotifications'
 
+// create notification when created notification
+import apiuser from "./apiuser";
+import Firebase from "firebase";
+// end
+
 Vue.use(Vuex)
 
 const TODO_ADD = 'todo_add'
 const TODO_TOGGLE_STATUS = 'todo_toggle_status'
-
 
 const mutations = {
     SET_LANG(state, payload) {
@@ -44,7 +48,7 @@ const actions = {
 
         if (response.status == 200) {
             return commit(TODO_TOGGLE_STATUS, response)
-        }else{
+        } else {
             return redirect();
         }
     },
@@ -53,6 +57,10 @@ const actions = {
         let response = await apiAddTodo(notifications)
 
         if (response.status == 200) {
+            // create notification when created notification
+            apiuser.getNotification();
+            // end
+            app.$router.push('/listNotificationsComponent');
             return commit(TODO_ADD, response.data)
         }
     },

@@ -11,7 +11,7 @@ export const routes = [
     { path: '/redirectComponent', name: 'redirectComponent', component: RedirectComponent },
     { path: '/registerComponent', name: 'registerComponent', component: RegisterComponent },
     { path: '/notificationsComponent', name: 'notificationsComponent', component: NotificationsComponent },
-    { path: '/viewNotification/:id', name: 'viewNotification', component: ViewNotification },
+    { path: '/viewNotifications/:id', name: 'viewNotifications', component: ViewNotification },
     { path: '/listNotificationsComponent', name: 'listNotificationsComponent', component: ListNotificationsComponent },
     { path: '/viewDetailComponent/:id', name: 'viewDetailComponent', component: ViewDetailComponent },
 ];
